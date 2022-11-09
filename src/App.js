@@ -4,6 +4,7 @@ import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
 import Creators from "./containers/Creators";
 import NoMatch from "./containers/NoMatch";
+import Footer from "./components/layout/Footer";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 }
