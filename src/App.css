@@ -1,10 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&family=Roboto:wght@400;700&display=swap");
 body {
   --black: hsl(0, 100%, 5%);
-  --grey: hsl(0, 0%, 90%);
+  --grey: hsl(0, 0%, 80%);
   --red: hsl(358, 80%, 52%);
 
   font-family: "Roboto", sans-serif;
   text-transform: none;
   font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

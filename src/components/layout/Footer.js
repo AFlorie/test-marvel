@@ -6,7 +6,8 @@ const year = new Date().getFullYear();
 const Footer = () => {
   return (
     <FooterContainer>
-      <p>Data provided by Marvel © Marvel {year}</p>
+      <p>Data provided by Marvel </p>
+      <p>© Marvel {year}</p>
     </FooterContainer>
   );
 };
@@ -22,4 +23,10 @@ const FooterContainer = styled.footer`
   padding: 1rem;
   display: flex;
   justify-content: center;
+  gap: 1rem;
+
+  @media (max-width: 380px) {
+    flex-direction: column;
+    align-items: center;
+  } ;
 `;

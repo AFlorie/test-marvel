@@ -1,26 +1,15 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Characters from "./containers/Characters";
 import Comics from "./containers/Comics";
 import Creators from "./containers/Creators";
 import NoMatch from "./containers/NoMatch";
 import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
 function App() {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Characters</Link>
-          </li>
-          <li>
-            <Link to="/comics">Comics</Link>
-          </li>
-          <li>
-            <Link to="/creators">Creators</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <div className="App">
         <Routes>
           <Route path="/" element={<Characters />} />
