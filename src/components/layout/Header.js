@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import marvel from "../../images/marvel.png";
+import marvel from "../../img/marvel.png";
 
 const Header = () => {
   return (
@@ -49,24 +49,22 @@ const HeaderContainer = styled.header`
       align-items: center;
 
       @media (max-width: 350px) {
-    
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
-  } ;
-    }
-    & li {
-      color: var(--grey);
-      list-style-type: none;
-      padding: 10px 0;
-      text-align: center;
-      border-bottom: 3px solid var(--black);
-    }
+  }
+  & li {
+    color: var(--grey);
+    list-style-type: none;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--black);
+  }
 
-    & li:hover,
-    .selected {
-      color: white;
-      border-bottom: 3px solid var(--red);
-    }
+  & li:hover,
+  .selected {
+    color: white;
+    border-bottom: 3px solid var(--red);
   }
 `;
