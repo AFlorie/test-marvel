@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import Error from "../components/layout/Error";
+
 const Characters = () => {
   const hash = "d90867f9c05c9ba732a2c85ee9e22ac1";
   const publicKey = "a6a49d6dede014c0ce382698879344a3";
@@ -28,7 +30,7 @@ const Characters = () => {
       })}
     </div>
   ) : (
-    <div>not found</div>
+    <Error />
   );
 };
 

@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import universe from "../img/universe.png";
+import universe from "../../img/universe.png";
 
-const NoMatch = () => {
+const Error = () => {
   return (
     <Container>
       <section>
         <img src={universe} alt="" />
-        <h1>The page you're looking for does not exist...</h1>
+        <h1>Ooops! Something went wrong...</h1>
       </section>
     </Container>
   );
 };
 
-export default NoMatch;
+export default Error;
 
 const Container = styled.div`
   & section {
