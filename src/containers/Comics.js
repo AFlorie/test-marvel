@@ -7,9 +7,6 @@ import LoaderSpinner from "../components/LoaderSpinner";
 import { key } from "../assets/authentification";
 import ComicCard from "../components/ComicCard";
 
-//to remove
-import comicsdata from "../comicsdata.json";
-
 const Comics = () => {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
