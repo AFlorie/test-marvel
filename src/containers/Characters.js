@@ -5,14 +5,10 @@ import styled from "styled-components";
 import Error from "../components/layout/Error";
 import CharacterCard from "../components/CharacterCard";
 import LoaderSpinner from "../components/LoaderSpinner";
-//to remove
-import data from "../remove.json";
+import { key } from "../assets/authentification";
 
 const Characters = () => {
-  const hash = "d90867f9c05c9ba732a2c85ee9e22ac1";
-  const publicKey = "a6a49d6dede014c0ce382698879344a3";
-
-  const [characters, setCharacters] = useState(data);
+  const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +16,7 @@ const Characters = () => {
       try {
         setIsLoading(true);
         const result = await axios.get(
-          `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${publicKey}&hash=${hash}`
+          `http://gateway.marvel.com/v1/public/characters?ts=1&apikey=${key.public}&hash=${key.hash}`
         );
 
         setCharacters(result.data.data.results);

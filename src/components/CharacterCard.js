@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import noPicture from "../img/noPicture.png";
 
 const CharacterCard = ({ character }) => {
-  console.log("solo", character);
+  let navigate = useNavigate();
+
+  const handleNavigate = (id) => {
+    navigate(`/${id}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={() => handleNavigate(character.id)}>
       <img
         src={
           character.thumbnail.path ===

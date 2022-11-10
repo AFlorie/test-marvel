@@ -48,7 +48,7 @@ const HeaderContainer = styled.header`
       justify-content: space-around;
       align-items: center;
 
-      @media (max-width: 350px) {
+      @media (max-width: 380px) {
         flex-direction: column;
         align-items: flex-start;
       }
