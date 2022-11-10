@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import noPicture from "../img/noPicture.png";
+import noCover from "../img/noCover.png";
 
-const CharacterCard = ({ character }) => {
+const ComicCard = ({ comic }) => {
   let navigate = useNavigate();
 
   const handleNavigate = (id) => {
@@ -11,22 +11,22 @@ const CharacterCard = ({ character }) => {
   };
 
   return (
-    <Container onClick={() => handleNavigate(character.id)}>
+    <Container onClick={() => handleNavigate(comic.id)}>
       <img
         src={
-          character.thumbnail.path ===
+          comic.thumbnail.path ===
           "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-            ? `${noPicture}`
-            : `${character.thumbnail.path}.${character.thumbnail.extension}`
+            ? `${noCover}`
+            : `${comic.thumbnail.path}.${comic.thumbnail.extension}`
         }
-        alt={character.name}
+        alt={comic.name}
       />
-      <p>{character.name}</p>
+      <p>{comic.title}</p>
     </Container>
   );
 };
 
-export default CharacterCard;
+export default ComicCard;
 
 const Container = styled.div`
   border: 2px solid var(--red);
@@ -43,17 +43,8 @@ const Container = styled.div`
 
   & p {
     text-align: center;
-    padding-top: 0.5rem;
+    padding: 0.5rem;
 
     color: var(--grey);
-  }
-
-  :hover {
-    outline: 3px solid var(--red);
-    cursor: pointer;
-
-    & p {
-      color: var(--red);
-    }
   }
 `;
