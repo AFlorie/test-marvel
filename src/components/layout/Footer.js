@@ -15,8 +15,7 @@ const Footer = () => {
 export default Footer;
 
 const FooterContainer = styled.footer`
-  position: absolute;
-  bottom: 0;
+  margin-top: auto;
   width: 100%;
   background-color: var(--black);
   color: var(--grey);

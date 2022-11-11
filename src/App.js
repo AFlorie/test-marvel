@@ -10,19 +10,17 @@ import Header from "./components/layout/Header";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Header />
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Characters />} />
-          <Route path="/:id" element={<Character />} />
-          <Route path="comics" element={<Comics />} />
-          <Route path="creators" element={<Creators />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Characters />} />
+        <Route path="/:id" element={<Character />} />
+        <Route path="comics" element={<Comics />} />
+        <Route path="creators" element={<Creators />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

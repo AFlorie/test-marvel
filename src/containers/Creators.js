@@ -11,9 +11,9 @@ import { key } from "../assets/authentification";
 const Creators = () => {
   const [creators, setCreators] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
 
-  const itemsPerPage = 10;
+  const [page, setPage] = useState(0);
+  const itemsPerPage = 30;
   const offset = page * itemsPerPage;
   const [totalPages, setTotalPages] = useState(0);
 
@@ -37,7 +37,6 @@ const Creators = () => {
   }, [offset]);
 
   const handlePageClick = (e) => {
-    console.log("page", e.selected + 1);
     setPage(e.selected);
     setIsLoading(true);
   };
@@ -77,7 +76,7 @@ export default Creators;
 const Container = styled.div`
   .pagination {
     padding: 0;
-    margin: 0 auto;
+    margin: 1rem auto;
     font-family: "Montserrat", sans-serif;
     max-width: 800px;
     display: flex;
@@ -116,7 +115,7 @@ const Characters = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 2rem;
-  padding: 3.5rem 0 6rem 0;
+  padding: 3.5rem 0 2rem 0;
 
   & li {
     padding: 0.5rem;
@@ -124,5 +123,6 @@ const Characters = styled.ul`
     background-color: var(--black);
     color: var(--grey);
     border: 2px solid red;
+    border-radius: 5px;
   }
 `;
