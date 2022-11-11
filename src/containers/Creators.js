@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import ReactPaginate from "react-paginate";
+import { FaBackward, FaForward } from "react-icons/fa";
 
 import Error from "../components/layout/Error";
 import LoaderSpinner from "../components/LoaderSpinner";
@@ -9,15 +11,22 @@ import { key } from "../assets/authentification";
 const Creators = () => {
   const [creators, setCreators] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const itemsPerPage = 10;
+  const offset = page * itemsPerPage;
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
     const fetch = async () => {
       try {
         setIsLoading(true);
         const result = await axios.get(
-          `http://gateway.marvel.com/v1/public/creators?ts=1&apikey=${key.public}&hash=${key.hash}`
+          `http://gateway.marvel.com/v1/public/creators?limit=${itemsPerPage}&offset=${offset}&ts=1&apikey=${key.public}&hash=${key.hash}`
         );
-
+        setTotalPages(
+          Math.ceil(result.data.data.total / result.data.data.limit)
+        );
         setCreators(result.data.data.results);
         setIsLoading(false);
       } catch (error) {
@@ -25,22 +34,83 @@ const Creators = () => {
       }
     };
     fetch();
-  }, []);
+  }, [offset]);
+
+  const handlePageClick = (e) => {
+    console.log("page", e.selected + 1);
+    setPage(e.selected);
+    setIsLoading(true);
+  };
 
   if (isLoading) return <LoaderSpinner />;
   if (creators.length === 0 && !isLoading) return <Error />;
+
   return (
     <Container>
-      {creators.map((creator) => {
-        return <li>{creator.fullName}</li>;
-      })}
+      <Characters>
+        {creators.map((creator) => {
+          return <li key={creator.id}>{creator.fullName}</li>;
+        })}
+      </Characters>
+      <ReactPaginate
+        breakLabel="..."
+        onPageChange={handlePageClick}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={2}
+        pageCount={totalPages}
+        previousLabel={<FaBackward />}
+        nextLabel={<FaForward />}
+        renderOnZeroPageCount={null}
+        containerClassName={"pagination"}
+        activeClassName={"active"}
+        previousClassName={"previous"}
+        nextClassName={"next"}
+        pageClassName={"pageNb"}
+        forcePage={page}
+      />
     </Container>
   );
 };
 
 export default Creators;
 
-const Container = styled.ul`
+const Container = styled.div`
+  .pagination {
+    padding: 0;
+    margin: 0 auto;
+    font-family: "Montserrat", sans-serif;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+  }
+
+  .pageNb {
+    cursor: pointer;
+    & :hover {
+      color: var(--red);
+    }
+  }
+
+  .previous,
+  .next {
+    cursor: pointer;
+    & :hover {
+      color: var(--red);
+    }
+  }
+
+  .active {
+    font-weight: 900;
+    cursor: pointer;
+    color: var(--red);
+    & :hover {
+      color: var(--red);
+    }
+  }
+`;
+
+const Characters = styled.ul`
   width: 80%;
   margin: 0 auto;
   display: grid;
