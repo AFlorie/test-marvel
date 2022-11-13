@@ -8,12 +8,13 @@ import Error from "../components/layout/Error";
 import LoaderSpinner from "../components/LoaderSpinner";
 import { key } from "../assets/authentification";
 import ComicCard from "../components/ComicCard";
+import SmallScreenPaginate from "../components/SmallScreenPaginate";
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const itemsPerPage = 10;
   const offset = page * itemsPerPage;
   const [totalPages, setTotalPages] = useState(0);
@@ -51,6 +52,11 @@ const Comics = () => {
           return <ComicCard key={comic.id} comic={comic} />;
         })}
       </CharactersList>
+      <SmallScreenPaginate
+        handlePageClick={handlePageClick}
+        totalPages={totalPages}
+        page={page}
+      />
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
@@ -82,6 +88,10 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+
+    @media (max-width: 380px) {
+      display: none;
+    }
   }
 
   .pageNb {

@@ -7,13 +7,14 @@ import { FaBackward, FaForward } from "react-icons/fa";
 import Error from "../components/layout/Error";
 import CharacterCard from "../components/CharacterCard";
 import LoaderSpinner from "../components/LoaderSpinner";
+import SmallScreenPaginate from "../components/SmallScreenPaginate";
 import { key } from "../assets/authentification";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const itemsPerPage = 10;
   const offset = page * itemsPerPage;
   const [totalPages, setTotalPages] = useState(0);
@@ -52,6 +53,11 @@ const Characters = () => {
           return <CharacterCard key={character.id} character={character} />;
         })}
       </CharactersList>
+      <SmallScreenPaginate
+        handlePageClick={handlePageClick}
+        totalPages={totalPages}
+        page={page}
+      />
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
@@ -83,6 +89,10 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+
+    @media (max-width: 380px) {
+      display: none;
+    }
   }
 
   .pageNb {

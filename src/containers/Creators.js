@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ReactPaginate from "react-paginate";
 import { FaBackward, FaForward } from "react-icons/fa";
 
+import SmallScreenPaginate from "../components/SmallScreenPaginate";
 import Error from "../components/layout/Error";
 import LoaderSpinner from "../components/LoaderSpinner";
 import { key } from "../assets/authentification";
@@ -51,6 +52,11 @@ const Creators = () => {
           return <li key={creator.id}>{creator.fullName}</li>;
         })}
       </Characters>
+      <SmallScreenPaginate
+        handlePageClick={handlePageClick}
+        totalPages={totalPages}
+        page={page}
+      />
       <ReactPaginate
         breakLabel="..."
         onPageChange={handlePageClick}
@@ -82,6 +88,10 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+
+    @media (max-width: 380px) {
+      display: none;
+    }
   }
 
   .pageNb {
