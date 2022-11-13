@@ -3,7 +3,7 @@ import axios from "axios";
 import LoaderSpinner from "../components/LoaderSpinner";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { key } from "../assets/authentification";
+import { key, baseUrl } from "../assets/authentification";
 
 const Character = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const Character = () => {
       try {
         setIsLoading(true);
         const result = await axios.get(
-          `http://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${key.public}&hash=${key.hash}`
+          `${baseUrl}characters/${id}?ts=1&apikey=${key.public}&hash=${key.hash}`
         );
 
         setCharacter(result.data.data.results[0]);
