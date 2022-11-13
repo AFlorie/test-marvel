@@ -7,7 +7,7 @@ import { FaBackward, FaForward } from "react-icons/fa";
 import SmallScreenPaginate from "../components/SmallScreenPaginate";
 import Error from "../components/layout/Error";
 import LoaderSpinner from "../components/LoaderSpinner";
-import { key } from "../assets/authentification";
+import { key, baseUrl } from "../assets/authentification";
 
 const Creators = () => {
   const [creators, setCreators] = useState([]);
@@ -23,7 +23,7 @@ const Creators = () => {
       try {
         setIsLoading(true);
         const result = await axios.get(
-          `http://gateway.marvel.com/v1/public/creators?limit=${itemsPerPage}&offset=${offset}&ts=1&apikey=${key.public}&hash=${key.hash}`
+          `${baseUrl}creators?limit=${itemsPerPage}&offset=${offset}&ts=1&apikey=${key.public}&hash=${key.hash}`
         );
         setTotalPages(
           Math.ceil(result.data.data.total / result.data.data.limit)

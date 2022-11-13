@@ -8,7 +8,7 @@ import Error from "../components/layout/Error";
 import CharacterCard from "../components/CharacterCard";
 import LoaderSpinner from "../components/LoaderSpinner";
 import SmallScreenPaginate from "../components/SmallScreenPaginate";
-import { key } from "../assets/authentification";
+import { key, baseUrl } from "../assets/authentification";
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
@@ -24,7 +24,7 @@ const Characters = () => {
       try {
         setIsLoading(true);
         const result = await axios.get(
-          `http://gateway.marvel.com/v1/public/characters?orderBy=name&limit=${itemsPerPage}&offset=${offset}&ts=1&apikey=${key.public}&hash=${key.hash}`
+          `${baseUrl}characters?orderBy=name&limit=${itemsPerPage}&offset=${offset}&ts=1&apikey=${key.public}&hash=${key.hash}`
         );
         setTotalPages(
           Math.ceil(result.data.data.total / result.data.data.limit)
