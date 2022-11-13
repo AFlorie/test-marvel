@@ -14,7 +14,7 @@ const SmallScreenPaginate = ({ handlePageClick, totalPages, page }) => {
         previousLabel={<FaBackward />}
         nextLabel={<FaForward />}
         renderOnZeroPageCount={null}
-        containerClassName={"pagination"}
+        containerClassName={"smallPagination"}
         activeClassName={"active"}
         previousClassName={"previous"}
         nextClassName={"next"}
@@ -28,7 +28,7 @@ const SmallScreenPaginate = ({ handlePageClick, totalPages, page }) => {
 export default SmallScreenPaginate;
 
 const Container = styled.div`
-  .pagination {
+  .smallPagination {
     padding: 0;
     margin: 1rem auto;
     font-family: "Montserrat", sans-serif;
