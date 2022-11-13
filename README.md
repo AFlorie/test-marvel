@@ -1,10 +1,15 @@
 # Marvel Project
 
+![](https://img.shields.io/github/last-commit/AFlorie/test-marvel.svg?style=for-the-badge)
+![](https://img.shields.io/website?up_color=green&up_message=online&url=https://test-marvel.netlify.app/)
 ![](https://res.cloudinary.com/drshresqr/image/upload/v1668335180/Git%20ReadMe%20Project%20Images/MarvelTest_r2ncrz.png)
 
 # Overview
 
 Technical project
+
+**Online demo**  
+https://test-marvel.netlify.app/
 
 **Architecture**  
 4 pages available : Characters, Comics, Creators and Character Page
